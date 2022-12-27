@@ -11,16 +11,13 @@ import java.util.List;
 public class NotesViewModel extends AndroidViewModel {
 
     private final NotesRepo notesRepo;
-    private final LiveData<List<NotesModel>> listLiveData;
-
 
     public NotesViewModel(@NonNull Application application) {
         super(application);
         notesRepo = new NotesRepo(application);
-        listLiveData=notesRepo.getAllNotes();
     }
 
-    public LiveData<List<NotesModel>> getAllNotes(){ return listLiveData; }
+    public LiveData<List<NotesModel>> getAllNotes(){ return notesRepo.getAllNotes(); }
 
     public void insert(NotesModel notesModel) { notesRepo.insert(notesModel); }
 

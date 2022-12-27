@@ -11,6 +11,7 @@ import java.util.List;
 
 @Dao
 public interface NotesDAO {
+    String tableName = "Notes_Table";
     @Insert
     void insert(NotesModel notesModel);
 
@@ -20,6 +21,6 @@ public interface NotesDAO {
     @Delete
     void delete(NotesModel notesModel);
 
-    @Query("select * from Notes_Table")
+    @Query(value = "select * from "+tableName)
     LiveData<List<NotesModel>> getNotes();
 }

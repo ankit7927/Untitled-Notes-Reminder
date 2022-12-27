@@ -8,16 +8,14 @@ import java.util.List;
 
 public class NotesRepo {
     private final NotesDAO notesDao;
-    private final LiveData<List<NotesModel>> listLiveData;
 
     public NotesRepo(Application application){
         NotesDatabase database = NotesDatabase.getInstance(application);
         notesDao = database.notesDAO();
-        listLiveData = notesDao.getNotes();
     }
 
     LiveData<List<NotesModel>> getAllNotes(){
-        return listLiveData;
+        return notesDao.getNotes();
     }
 
     void insert(NotesModel notesModel){
