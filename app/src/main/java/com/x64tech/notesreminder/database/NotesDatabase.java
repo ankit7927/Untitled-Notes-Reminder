@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = NotesModel.class, version = 1)
+@Database(entities = NotesModel.class, version = 2)
 public abstract class NotesDatabase extends RoomDatabase {
     public abstract NotesDAO notesDAO();
     private static volatile NotesDatabase Instance;
