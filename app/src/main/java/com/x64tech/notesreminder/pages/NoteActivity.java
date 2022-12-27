@@ -1,25 +1,24 @@
 package com.x64tech.notesreminder.pages;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.x64tech.notesreminder.R;
 import com.x64tech.notesreminder.database.NotesModel;
 import com.x64tech.notesreminder.database.NotesViewModel;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 
 public class NoteActivity extends AppCompatActivity {
 
+    ActionBar actionBar;
     private NotesViewModel notesViewModel;
     private EditText noteTitle, noteBody;
     private NotesModel notesModel;
@@ -27,6 +26,8 @@ public class NoteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note);
+
+        actionBar = getSupportActionBar();
 
         initVars();
     }
@@ -42,6 +43,11 @@ public class NoteActivity extends AppCompatActivity {
             this.notesModel = notesModel;
             noteTitle.setText(notesModel.getTitle());
             noteBody.setText(notesModel.getBody());
+        }
+
+        if (actionBar != null) {
+            if (notesModel != null) actionBar.setTitle("Edit Note");
+            else actionBar.setTitle("Create Note");
         }
     }
 
