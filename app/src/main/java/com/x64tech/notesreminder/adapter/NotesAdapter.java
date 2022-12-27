@@ -1,6 +1,7 @@
 package com.x64tech.notesreminder.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.x64tech.notesreminder.R;
 import com.x64tech.notesreminder.database.NotesModel;
+import com.x64tech.notesreminder.pages.NoteActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +23,7 @@ import java.util.Objects;
 public class NotesAdapter extends
         RecyclerView.Adapter<NotesAdapter.NotesAdapterViewHolder> {
 
+    Intent intent;
     Context context;
     List<NotesModel> notesModelList = new ArrayList<>();
 
@@ -40,6 +43,14 @@ public class NotesAdapter extends
         NotesModel notesModel = notesModelList.get(position);
         holder.noteTitleView.setText(notesModel.getTitle());
         holder.noteBodyView.setText(notesModel.getBody());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent = new Intent(context, NoteActivity.class);
+                intent.putExtra("notesModel", notesModel);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

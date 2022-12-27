@@ -7,11 +7,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.x64tech.notesreminder.R;
 import com.x64tech.notesreminder.database.NotesModel;
 import com.x64tech.notesreminder.database.NotesViewModel;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -20,6 +22,7 @@ public class NoteActivity extends AppCompatActivity {
 
     private NotesViewModel notesViewModel;
     private EditText noteTitle, noteBody;
+    private NotesModel notesModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,11 +36,25 @@ public class NoteActivity extends AppCompatActivity {
         noteBody = findViewById(R.id.noteBody);
 
         notesViewModel = new ViewModelProvider(this).get(NotesViewModel.class);
+
+        NotesModel notesModel = (NotesModel) getIntent().getSerializableExtra("notesModel");
+        if (notesModel != null){
+            this.notesModel = notesModel;
+            noteTitle.setText(notesModel.getTitle());
+            noteBody.setText(notesModel.getBody());
+        }
     }
 
     private void save(){
-        if (!(noteTitle.getText().toString().trim().equals("")
-        && noteBody.getText().toString().trim().equals(""))){
+        if (!(noteTitle.getText().toString().trim().isEmpty()
+        && noteBody.getText().toString().trim().isEmpty())){
+
+            if (notesModel != null){
+                notesModel.setTitle(noteTitle.getText().toString().trim());
+                notesModel.setBody(noteBody.getText().toString().trim());
+                notesViewModel.update(notesModel);
+                return;
+            }
 
             NotesModel notesModel = new NotesModel();
 
@@ -48,7 +65,6 @@ public class NoteActivity extends AppCompatActivity {
                         .format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")));
             }
 
-            Log.d("TAG", notesModel.toString());
             notesViewModel.insert(notesModel);
         }
     }
