@@ -7,7 +7,7 @@
     tools:context=".pages.NoteActivity">
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/noteTitle"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:background="@android:color/transparent"
@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine"
+        android:id="@+id/noteBody"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/transparent"
@@ -37,5 +37,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/noteTitle" />
 </androidx.constraintlayout.widget.ConstraintLayout>
