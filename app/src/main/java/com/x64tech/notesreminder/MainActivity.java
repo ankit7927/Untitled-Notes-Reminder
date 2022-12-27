@@ -1,5 +1,6 @@
 package com.x64tech.notesreminder;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -8,13 +9,15 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.x64tech.notesreminder.adapter.NotesAdapter;
 import com.x64tech.notesreminder.database.NotesModel;
 import com.x64tech.notesreminder.database.NotesViewModel;
+import com.x64tech.notesreminder.pages.AboutUsActivity;
 import com.x64tech.notesreminder.pages.NoteActivity;
 
 import java.util.List;
@@ -58,5 +61,21 @@ public class MainActivity extends AppCompatActivity {
         notesViewModel = new ViewModelProvider(this).get(NotesViewModel.class);
 
         notesAdapter = new NotesAdapter(this);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.menuAbout) {
+            intent = new Intent(this, AboutUsActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
