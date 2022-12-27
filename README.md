@@ -26,5 +26,7 @@ Like this repo, give it a star ⭐ and fork 🍽️ this repository to help othe
 ## 🔗 Links
 [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](ankit84-tech.github.io/my-portfolio)
 
-##Screenshots
-![Alt text](https://github.com/x64-tech/Untitled-Notes-Reminder/blob/master/Screenshot_20221227_202613_Notes%20%26%20Reminder.jpg)
+
+(https://github.com/x64-tech/Untitled-Notes-Reminder/blob/master/Screenshot_20221227_202613_Notes%20%26%20Reminder.jpg)
+(https://github.com/x64-tech/Untitled-Notes-Reminder/blob/master/Screenshot_20221227_203114_Notes%20%26%20Reminder.jpg)
+(https://github.com/x64-tech/Untitled-Notes-Reminder/blob/master/Screenshot_20221227_203125_Notes%20%26%20Reminder.jpg)
