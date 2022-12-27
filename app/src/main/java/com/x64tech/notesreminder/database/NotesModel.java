@@ -6,7 +6,6 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 @Entity(tableName = "Notes_Table")
 public class NotesModel implements Serializable {
@@ -20,16 +19,10 @@ public class NotesModel implements Serializable {
     private String body;
 
     @ColumnInfo(name = "reminder_time")
-    private LocalDateTime reminder_time;
+    private String reminder_time;
 
     
     public NotesModel() {
-    }
-
-    public NotesModel(String title, String body, LocalDateTime reminder_time) {
-        this.title = title;
-        this.body = body;
-        this.reminder_time = reminder_time;
     }
 
     public int getId() {
@@ -56,11 +49,11 @@ public class NotesModel implements Serializable {
         this.body = body;
     }
 
-    public LocalDateTime getReminder_time() {
+    public String getReminder_time() {
         return reminder_time;
     }
 
-    public void setReminder_time(LocalDateTime reminder_time) {
+    public void setReminder_time(String reminder_time) {
         this.reminder_time = reminder_time;
     }
 }
